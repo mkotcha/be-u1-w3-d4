@@ -8,6 +8,8 @@ import java.util.Set;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
+@NamedQuery(name = "getSoldOut", query = "SELECT e FROM Event e WHERE e.getMaxParticipants = e.getParticipations.size()")
+@NamedQuery(name = "getTbc", query = "SELECT e FROM Event e JOIN Participation p WHERE p.participationState = 'TBC'")
 public abstract class Event {
 
     @Id

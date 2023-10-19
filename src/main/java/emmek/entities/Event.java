@@ -107,4 +107,18 @@ public abstract class Event {
     public void setLocation(Location location) {
         this.location = location;
     }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", eventDate=" + eventDate +
+                ", description='" + description + '\'' +
+                ", eventType=" + eventType +
+                ", maxParticipants=" + maxParticipants +
+                ", participations=" + participations +
+                ", location=" + location +
+                ',';
+    }
 }

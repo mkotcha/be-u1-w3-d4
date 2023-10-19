@@ -53,4 +53,13 @@ public class Location {
     public void setEvents(Set<Event> events) {
         this.events = events;
     }
+
+    @Override
+    public String toString() {
+        return "Location{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", city='" + city + '\'' +
+                '}';
+    }
 }

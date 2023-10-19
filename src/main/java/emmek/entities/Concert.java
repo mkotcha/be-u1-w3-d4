@@ -4,15 +4,14 @@ package emmek.entities;
 import emmek.enumType.EventType;
 import emmek.enumType.Genre;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "concerts")
 public class Concert extends Event {
 
+    @Enumerated(EnumType.STRING)
     private Genre genre;
 
     @Column(name = "is_streaming")
@@ -43,5 +42,11 @@ public class Concert extends Event {
         isStreaming = streaming;
     }
 
-
+    @Override
+    public String toString() {
+        return super.toString() +
+                "genre=" + genre +
+                ", isStreaming=" + isStreaming +
+                '}' + "\n";
+    }
 }

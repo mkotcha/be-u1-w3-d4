@@ -50,7 +50,7 @@ public class EventDaoImpl implements EventDao {
     }
 
     public List<Concert> getStreamingConcert() {
-        TypedQuery<Concert> query = em.createQuery("SELECT e FROM Concert c WHERE c.is_streaming = true", Concert.class);
+        TypedQuery<Concert> query = em.createQuery("SELECT c FROM Concert c WHERE c.isStreaming = true", Concert.class);
         return query.getResultList();
     }
 

@@ -4,6 +4,7 @@ package emmek.entities;
 import emmek.enumType.EventType;
 import emmek.enumType.Genre;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDate;
@@ -13,6 +14,8 @@ import java.time.LocalDate;
 public class Concert extends Event {
 
     private Genre genre;
+
+    @Column(name = "is_streaming")
     private boolean isStreaming;
 
     public Concert() {

@@ -1,9 +1,13 @@
 package emmek.dao;
 
+import emmek.entities.Concert;
 import emmek.entities.Event;
+import emmek.enumType.Genre;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
+import javax.persistence.TypedQuery;
+import java.util.List;
 
 public class EventDaoImpl implements EventDao {
 
@@ -43,6 +47,17 @@ public class EventDaoImpl implements EventDao {
         em.refresh(event);
         tx.commit();
         System.out.println("Event refreshed");
+    }
+
+    public List<Concert> getStreamingConcert() {
+        TypedQuery<Concert> query = em.createQuery("SELECT e FROM Concert c WHERE c.is_streaming = true", Concert.class);
+        return query.getResultList();
+    }
+
+    public List<Concert> getConcertsByGenre(Genre genre) {
+        TypedQuery<Concert> query = em.createQuery("SELECT c FROM Concert c WHERE c.genre = :genre", Concert.class);
+        query.setParameter("genre", genre);
+        return query.getResultList();
     }
 
 }

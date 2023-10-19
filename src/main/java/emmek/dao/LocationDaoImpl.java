@@ -1,4 +1,6 @@
-package emmek.entities;
+package emmek.dao;
+
+import emmek.entities.Location;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;

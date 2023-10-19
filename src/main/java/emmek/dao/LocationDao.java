@@ -1,4 +1,6 @@
-package emmek.entities;
+package emmek.dao;
+
+import emmek.entities.Location;
 
 public interface LocationDao {
     public void save(Location location);

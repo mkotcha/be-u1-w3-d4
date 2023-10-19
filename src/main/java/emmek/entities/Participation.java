@@ -1,5 +1,7 @@
 package emmek.entities;
 
+import emmek.enumType.ParticipationState;
+
 import javax.persistence.*;
 
 @Entity

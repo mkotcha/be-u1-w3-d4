@@ -1,4 +1,6 @@
-package emmek.entities;
+package emmek.dao;
+
+import emmek.entities.Participation;
 
 public interface ParticipationDao {
     public void save(Participation participation);

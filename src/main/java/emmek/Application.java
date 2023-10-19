@@ -1,6 +1,16 @@
 package emmek;
 
-import emmek.entities.*;
+import emmek.dao.EventDaoImpl;
+import emmek.dao.LocationDaoImpl;
+import emmek.dao.ParticipationDaoImpl;
+import emmek.dao.PersonDaoImpl;
+import emmek.entities.Event;
+import emmek.entities.Location;
+import emmek.entities.Participation;
+import emmek.entities.Person;
+import emmek.enumType.EventType;
+import emmek.enumType.ParticipationState;
+import emmek.enumType.Sex;
 import emmek.utils.JpaUtil;
 import net.datafaker.Faker;
 

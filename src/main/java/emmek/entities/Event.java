@@ -1,12 +1,14 @@
 package emmek.entities;
 
+import emmek.enumType.EventType;
+
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.Set;
 
 @Entity
-@Table(name = "events")
-public class Event {
+@Inheritance(strategy = InheritanceType.JOINED)
+public abstract class Event {
 
     @Id
     @GeneratedValue

@@ -1,4 +1,6 @@
-package emmek.entities;
+package emmek.dao;
+
+import emmek.entities.Person;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
@@ -22,7 +24,6 @@ public class PersonDaoImpl implements PersonDao {
 
     @Override
     public Person getById(long id) {
-        em.
         return em.find(Person.class, id);
     }
 

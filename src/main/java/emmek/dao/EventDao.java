@@ -1,4 +1,6 @@
-package emmek.entities;
+package emmek.dao;
+
+import emmek.entities.Event;
 
 public interface EventDao {
     public void save(Event event);

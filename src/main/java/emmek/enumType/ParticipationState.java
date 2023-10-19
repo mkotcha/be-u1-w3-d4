@@ -1,4 +1,4 @@
-package emmek.entities;
+package emmek.enumType;
 
 public enum ParticipationState {
     CONFIRMED,

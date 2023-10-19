@@ -1,4 +1,6 @@
-package emmek.entities;
+package emmek.dao;
+
+import emmek.entities.Person;
 
 public interface PersonDao {
     public void save(Person person);

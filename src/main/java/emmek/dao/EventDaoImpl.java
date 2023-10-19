@@ -1,8 +1,6 @@
 package emmek.dao;
 
-import emmek.entities.Concert;
-import emmek.entities.Event;
-import emmek.entities.FootballMatch;
+import emmek.entities.*;
 import emmek.enumType.Genre;
 
 import javax.persistence.EntityManager;
@@ -73,6 +71,18 @@ public class EventDaoImpl implements EventDao {
 
     public List<FootballMatch> getDraw() {
         TypedQuery<FootballMatch> query = em.createNamedQuery("draw", FootballMatch.class);
+        return query.getResultList();
+    }
+
+    public List<AthleticsCompetition> getWinByAthlete(Person person) {
+        TypedQuery<AthleticsCompetition> query = em.createNamedQuery("winByAthlete", AthleticsCompetition.class);
+        query.setParameter("winner", person);
+        return query.getResultList();
+    }
+
+    public List<Person> getPartecipateByAthlete(Person person) {
+        TypedQuery<Person> query = em.createNamedQuery("partecipateByAthlete", Person.class);
+        query.setParameter("athlete", person);
         return query.getResultList();
     }
 

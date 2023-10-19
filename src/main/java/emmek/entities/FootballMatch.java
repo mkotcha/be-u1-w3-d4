@@ -12,11 +12,13 @@ import java.time.LocalDate;
 @Table(name = "football_matches")
 @NamedQuery(name = "winHome", query = "SELECT f FROM FootballMatch f WHERE f.homeScore > f.awayScore")
 @NamedQuery(name = "winAway", query = "SELECT f FROM FootballMatch f WHERE f.homeScore < f.awayScore")
+@NamedQuery(name = "draw", query = "SELECT f FROM FootballMatch f WHERE f.homeScore = f.awayScore")
+
 public class FootballMatch extends Event {
 
     private String homeTeam;
     private String awayTeam;
-    private String result;
+    private String winner;
     private int homeScore;
     private int awayScore;
 
@@ -28,7 +30,7 @@ public class FootballMatch extends Event {
         super(title, eventDate, description, eventType, maxParticipants, location);
         this.homeTeam = homeTeam;
         this.awayTeam = awayTeam;
-        this.result = null;
+        this.winner = null;
         this.homeScore = 0;
         this.awayScore = 0;
     }
@@ -42,11 +44,14 @@ public class FootballMatch extends Event {
     }
 
     public String getResult() {
-        return result;
-    }
 
-    public void setResult(String result) {
-        this.result = result;
+        if (this.homeScore > this.awayScore) {
+            return this.homeTeam + " won against " + this.awayTeam + "  " + this.homeScore + " - " + this.awayScore;
+        } else if (this.homeScore < this.awayScore) {
+            return this.awayTeam + " won against " + this.homeTeam + "  " + this.awayScore + " - " + this.homeScore;
+        } else {
+            return this.homeTeam + " draw with " + this.awayTeam + "  " + this.homeScore + " - " + this.awayScore;
+        }
     }
 
     public int getHomeScore() {
@@ -69,11 +74,11 @@ public class FootballMatch extends Event {
 
     private void setWinner() {
         if (this.homeScore > this.awayScore) {
-            this.result = this.homeTeam + " won " + this.homeScore + " - " + this.awayScore;
+            this.winner = this.homeTeam + " won " + this.homeScore + " - " + this.awayScore;
         } else if (this.homeScore < this.awayScore) {
-            this.result = this.awayTeam + " won " + this.awayScore + " - " + this.homeScore;
+            this.winner = this.awayTeam + " won " + this.awayScore + " - " + this.homeScore;
         } else {
-            this.result = null;
+            this.winner = null;
         }
     }
 

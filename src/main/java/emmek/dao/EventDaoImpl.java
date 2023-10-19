@@ -71,4 +71,9 @@ public class EventDaoImpl implements EventDao {
         return query.getResultList();
     }
 
+    public List<FootballMatch> getDraw() {
+        TypedQuery<FootballMatch> query = em.createNamedQuery("draw", FootballMatch.class);
+        return query.getResultList();
+    }
+
 }

@@ -9,6 +9,11 @@ import java.util.Set;
 
 @Entity
 @Table(name = "athletics_competitions")
+@NamedQuery(name = "winByAthlete", query = "SELECT a FROM AthleticsCompetition a WHERE a.winner = :winner")
+
+@NamedQuery(name = "partecipateByAthlete", query = "SELECT a FROM AthleticsCompetition a JOIN Person p WHERE p = :athlete")
+
+
 public class AthleticsCompetition extends Event {
 
     @ManyToOne

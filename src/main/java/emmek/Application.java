@@ -44,8 +44,9 @@ public class Application {
 
 //        eventDao.getStreamingConcert().forEach(elm -> System.out.println(elm.toString()));
 //        eventDao.getConcertsByGenre(Genre.ROCK).forEach(elm -> System.out.println(elm.toString()));
-        eventDao.getWinHome().forEach(elm -> System.out.println(elm.getResult()));
+//        eventDao.getWinHome().forEach(elm -> System.out.println(elm.getResult()));
         eventDao.getWinAway().forEach(elm -> System.out.println(elm.getResult()));
+        eventDao.getDraw().forEach(elm -> System.out.println(elm.getResult()));
 
     }
 

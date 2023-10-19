@@ -4,11 +4,14 @@ package emmek.entities;
 import emmek.enumType.EventType;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
 @Table(name = "football_matches")
+@NamedQuery(name = "winHome", query = "SELECT f FROM FootballMatch f WHERE f.homeScore > f.awayScore")
+@NamedQuery(name = "winAway", query = "SELECT f FROM FootballMatch f WHERE f.homeScore < f.awayScore")
 public class FootballMatch extends Event {
 
     private String homeTeam;
@@ -52,6 +55,7 @@ public class FootballMatch extends Event {
 
     public void setHomeScore(int homeScore) {
         this.homeScore = homeScore;
+        setWinner();
     }
 
     public int getAwayScore() {
@@ -60,6 +64,17 @@ public class FootballMatch extends Event {
 
     public void setAwayScore(int awayScore) {
         this.awayScore = awayScore;
+        setWinner();
+    }
+
+    private void setWinner() {
+        if (this.homeScore > this.awayScore) {
+            this.result = this.homeTeam + " won " + this.homeScore + " - " + this.awayScore;
+        } else if (this.homeScore < this.awayScore) {
+            this.result = this.awayTeam + " won " + this.awayScore + " - " + this.homeScore;
+        } else {
+            this.result = null;
+        }
     }
 
 }

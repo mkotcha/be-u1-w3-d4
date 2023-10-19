@@ -2,6 +2,7 @@ package emmek.dao;
 
 import emmek.entities.Concert;
 import emmek.entities.Event;
+import emmek.entities.FootballMatch;
 import emmek.enumType.Genre;
 
 import javax.persistence.EntityManager;
@@ -57,6 +58,16 @@ public class EventDaoImpl implements EventDao {
     public List<Concert> getConcertsByGenre(Genre genre) {
         TypedQuery<Concert> query = em.createQuery("SELECT c FROM Concert c WHERE c.genre = :genre", Concert.class);
         query.setParameter("genre", genre);
+        return query.getResultList();
+    }
+
+    public List<FootballMatch> getWinHome() {
+        TypedQuery<FootballMatch> query = em.createNamedQuery("winHome", FootballMatch.class);
+        return query.getResultList();
+    }
+
+    public List<FootballMatch> getWinAway() {
+        TypedQuery<FootballMatch> query = em.createNamedQuery("winAway", FootballMatch.class);
         return query.getResultList();
     }
 

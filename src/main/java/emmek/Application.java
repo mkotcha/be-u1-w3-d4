@@ -27,19 +27,26 @@ public class Application {
         EventDaoImpl eventDao = new EventDaoImpl(em);
         location = new Location(faker.address().cityName(), faker.address().city());
         locationDao.save(location);
-        System.out.println(faker.bool().bool());
-        Concert concert = new Concert(faker.book().title(),
+
+        FootballMatch match = new FootballMatch(faker.book().title(),
                 faker.date().future(365, TimeUnit.DAYS).toLocalDateTime().toLocalDate(),
                 faker.lorem().paragraph(),
                 faker.options().option(EventType.class),
                 faker.number().numberBetween(10, 200),
                 location,
-                faker.options().option(Genre.class),
-                faker.bool().bool());
-        eventDao.save(concert);
+                faker.address().city(),
+                faker.address().city());
+
+        match.setAwayScore(faker.number().numberBetween(0, 4));
+        match.setHomeScore(faker.number().numberBetween(0, 4));
+
+        eventDao.save(match);
 
 //        eventDao.getStreamingConcert().forEach(elm -> System.out.println(elm.toString()));
-        eventDao.getConcertsByGenre(Genre.ROCK).forEach(elm -> System.out.println(elm.toString()));
+//        eventDao.getConcertsByGenre(Genre.ROCK).forEach(elm -> System.out.println(elm.toString()));
+        eventDao.getWinHome().forEach(elm -> System.out.println(elm.getResult()));
+        eventDao.getWinAway().forEach(elm -> System.out.println(elm.getResult()));
+
     }
 
     public void fakerize() {
@@ -59,6 +66,15 @@ public class Application {
 
                 location = new Location(faker.address().cityName(), faker.address().city());
                 locationDao.save(location);
+                Concert concert = new Concert(faker.book().title(),
+                        faker.date().future(365, TimeUnit.DAYS).toLocalDateTime().toLocalDate(),
+                        faker.lorem().paragraph(),
+                        faker.options().option(EventType.class),
+                        faker.number().numberBetween(10, 200),
+                        location,
+                        faker.options().option(Genre.class),
+                        faker.bool().bool());
+                eventDao.save(concert);
 //                event = new Event(faker.book().title(),
 //                        faker.date().future(365, TimeUnit.DAYS).toLocalDateTime().toLocalDate(),
 //                        faker.lorem().paragraph(),
